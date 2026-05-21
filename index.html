@@ -3,796 +3,164 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Notaría Monzón Moreno — Madrid</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --azul: #1A2F5A;
-      --marfil: #F2F0EB;
-      --dorado: #8B7355;
-      --dorado-light: #a8906e;
-      --texto: #2c2c2c;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: Georgia, 'Times New Roman', serif;
-      color: var(--texto);
-      background: var(--marfil);
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 2rem;
-      background: rgba(26, 47, 90, 0.92);
-      backdrop-filter: blur(6px);
-    }
-
-    .nav-logo {
-      font-family: 'Playfair Display', serif;
-      color: var(--marfil);
-      font-size: 1.1rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-decoration: none;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--marfil);
-      text-decoration: none;
-      font-size: 0.85rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      opacity: 0.85;
-      transition: opacity 0.2s;
-    }
-
-    .nav-links a:hover { opacity: 1; }
-
-    .nav-cta {
-      background: var(--dorado);
-      color: var(--marfil) !important;
-      padding: 0.5rem 1.2rem;
-      border-radius: 2px;
-      opacity: 1 !important;
-      transition: background 0.2s !important;
-    }
-
-    .nav-cta:hover { background: var(--dorado-light) !important; }
-
-    /* ── HERO ── */
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 6rem 1.5rem 3rem;
-      background:
-        linear-gradient(to bottom, rgba(26,47,90,0.72) 0%, rgba(26,47,90,0.55) 100%),
-        url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600&q=80&fit=crop') center/cover no-repeat;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(139,115,85,0.25);
-      border: 1px solid var(--dorado);
-      color: var(--marfil);
-      font-size: 0.8rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.4rem 1rem;
-      border-radius: 2px;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.2rem, 6vw, 4.2rem);
-      font-weight: 900;
-      color: #fff;
-      line-height: 1.15;
-      margin-bottom: 1.2rem;
-      max-width: 820px;
-    }
-
-    .hero p {
-      font-size: clamp(1rem, 2.5vw, 1.2rem);
-      color: rgba(242,240,235,0.88);
-      max-width: 580px;
-      margin: 0 auto 2rem;
-      line-height: 1.7;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: center;
-    }
-
-    .btn-primary {
-      background: var(--dorado);
-      color: var(--marfil);
-      padding: 0.85rem 2rem;
-      font-size: 0.95rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      border: none;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      transition: background 0.25s, transform 0.15s;
-    }
-
-    .btn-primary:hover { background: var(--dorado-light); transform: translateY(-1px); }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--marfil);
-      padding: 0.85rem 2rem;
-      font-size: 0.95rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      border: 1px solid rgba(242,240,235,0.5);
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      transition: border-color 0.25s, transform 0.15s;
-    }
-
-    .btn-outline:hover { border-color: var(--marfil); transform: translateY(-1px); }
-
-    .hero-trust {
-      margin-top: 3rem;
-      display: flex;
-      gap: 2.5rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .trust-item {
-      color: rgba(242,240,235,0.75);
-      font-size: 0.8rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    /* ── SECTION BASE ── */
-    section { padding: 5rem 1.5rem; }
-
-    .container { max-width: 1100px; margin: 0 auto; }
-
-    .section-label {
-      font-size: 0.75rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--dorado);
-      margin-bottom: 0.8rem;
-    }
-
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      color: var(--azul);
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 1.2rem;
-    }
-
-    .section-text {
-      font-size: 1.05rem;
-      line-height: 1.8;
-      color: #555;
-      max-width: 640px;
-    }
-
-    /* ── SERVICIOS ── */
-    .servicios { background: #fff; }
-
-    .servicios-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-
-    .servicio-card {
-      background: var(--marfil);
-      padding: 2rem;
-      border-top: 3px solid var(--dorado);
-      transition: box-shadow 0.25s, transform 0.2s;
-    }
-
-    .servicio-card:hover {
-      box-shadow: 0 8px 30px rgba(26,47,90,0.1);
-      transform: translateY(-3px);
-    }
-
-    .servicio-icon {
-      width: 40px;
-      height: 40px;
-      margin-bottom: 1.2rem;
-      color: var(--dorado);
-    }
-
-    .servicio-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.15rem;
-      color: var(--azul);
-      margin-bottom: 0.7rem;
-    }
-
-    .servicio-card p {
-      font-size: 0.9rem;
-      color: #666;
-      line-height: 1.7;
-    }
-
-    /* ── SEDES ── */
-    .sedes { background: var(--azul); }
-
-    .sedes .section-label { color: var(--dorado); }
-    .sedes .section-title { color: var(--marfil); }
-
-    .sedes-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
-      margin-top: 3rem;
-    }
-
-    .sede-card {
-      border: 1px solid rgba(139,115,85,0.4);
-      padding: 2rem;
-      transition: border-color 0.25s;
-    }
-
-    .sede-card:hover { border-color: var(--dorado); }
-
-    .sede-icon {
-      width: 36px;
-      height: 36px;
-      color: var(--dorado);
-      margin-bottom: 1rem;
-    }
-
-    .sede-card h3 {
-      font-family: 'Playfair Display', serif;
-      color: var(--marfil);
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .sede-card p {
-      color: rgba(242,240,235,0.7);
-      font-size: 0.9rem;
-      line-height: 1.6;
-    }
-
-    /* ── CONFIANZA ── */
-    .confianza { background: var(--marfil); }
-
-    .confianza-inner {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 3rem;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .confianza-stats {
-      display: flex;
-      gap: 3rem;
-      flex-wrap: wrap;
-    }
-
-    .stat {
-      text-align: center;
-    }
-
-    .stat-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 3rem;
-      font-weight: 900;
-      color: var(--azul);
-      line-height: 1;
-    }
-
-    .stat-label {
-      font-size: 0.8rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--dorado);
-      margin-top: 0.4rem;
-    }
-
-    .confianza-text { max-width: 500px; }
-
-    /* ── CONTACTO ── */
-    .contacto { background: #fff; }
-
-    .contacto-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: start;
-    }
-
-    .contacto-info h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.4rem;
-      color: var(--azul);
-      margin-bottom: 1.5rem;
-    }
-
-    .contacto-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-      margin-bottom: 1.4rem;
-    }
-
-    .contacto-item-icon {
-      width: 22px;
-      height: 22px;
-      color: var(--dorado);
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
-    .contacto-item p { font-size: 0.95rem; color: #555; line-height: 1.6; }
-    .contacto-item a { color: var(--azul); text-decoration: none; }
-    .contacto-item a:hover { color: var(--dorado); }
-
-    /* FORM */
-    .form-group { margin-bottom: 1.2rem; }
-
-    label {
-      display: block;
-      font-size: 0.78rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--azul);
-      margin-bottom: 0.4rem;
-    }
-
-    input, select, textarea {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      font-family: Georgia, serif;
-      font-size: 0.9rem;
-      border: 1px solid #d0ccc4;
-      background: var(--marfil);
-      color: var(--texto);
-      outline: none;
-      transition: border-color 0.2s;
-    }
-
-    input:focus, select:focus, textarea:focus { border-color: var(--dorado); }
-
-    textarea { height: 110px; resize: vertical; }
-
-    .form-submit {
-      width: 100%;
-      background: var(--azul);
-      color: var(--marfil);
-      border: none;
-      padding: 1rem;
-      font-family: Georgia, serif;
-      font-size: 0.9rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: background 0.25s;
-      margin-top: 0.5rem;
-    }
-
-    .form-submit:hover { background: var(--dorado); }
-
-    /* ── FOOTER ── */
-    footer {
-      background: #0d1d3a;
-      color: rgba(242,240,235,0.6);
-      padding: 3rem 1.5rem 2rem;
-      font-size: 0.82rem;
-    }
-
-    .footer-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: space-between;
-      align-items: flex-start;
-    }
-
-    .footer-brand {
-      font-family: 'Playfair Display', serif;
-      color: var(--marfil);
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-
-    .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-    .footer-links a { color: rgba(242,240,235,0.6); text-decoration: none; transition: color 0.2s; }
-    .footer-links a:hover { color: var(--dorado); }
-
-    .footer-divider {
-      border: none;
-      border-top: 1px solid rgba(242,240,235,0.1);
-      margin: 2rem auto 1.5rem;
-      max-width: 1100px;
-    }
-
-    .footer-bottom {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    /* ── HAMBURGER MENU (MOBILE) ── */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 4px;
-    }
-
-    .hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--marfil);
-      transition: all 0.3s;
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
-      nav { padding: 1rem 1.25rem; }
-
-      .hamburger { display: flex; }
-
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0; right: 0;
-        background: var(--azul);
-        flex-direction: column;
-        gap: 0;
-        padding: 1rem 0;
-      }
-
-      .nav-links.open { display: flex; }
-
-      .nav-links li a {
-        display: block;
-        padding: 0.75rem 1.5rem;
-        border-bottom: 1px solid rgba(242,240,235,0.08);
-      }
-
-      .contacto-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-
-      .confianza-inner { flex-direction: column; }
-
-      .footer-inner { flex-direction: column; }
-      .footer-bottom { flex-direction: column; text-align: center; }
-
-      .hero-trust { gap: 1.5rem; }
-    }
-
-    @media (max-width: 480px) {
-      .confianza-stats { gap: 2rem; }
-    }
-  </style>
+  <title>Notaría Monzón Moreno | Madrid</title>
+  <meta name="description" content="Notaría Monzón Moreno ofrece compraventas, herencias, testamentos, poderes y constitución de sociedades con sedes en Madrid Centro y Chamartín." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <header class="site-header">
+    <a href="#inicio" class="brand">
+      Notaría Monzón Moreno
+      <span>Madrid Centro · Chamartín</span>
+    </a>
+    <nav class="site-nav" aria-label="Principal">
+      <a href="#servicios">Servicios</a>
+      <a href="#sedes">Sedes</a>
+      <a href="#contacto">Contacto</a>
+      <a href="tel:+34607147464" class="nav-call">607 14 74 64</a>
+    </nav>
+  </header>
 
-<!-- ── NAV ── -->
-<nav>
-  <a href="#" class="nav-logo">Notaría Monzón Moreno</a>
-  <button class="hamburger" id="hamburger" aria-label="Menú">
-    <span></span><span></span><span></span>
-  </button>
-  <ul class="nav-links" id="nav-links">
-    <li><a href="#servicios">Servicios</a></li>
-    <li><a href="#sedes">Sedes</a></li>
-    <li><a href="#nosotros">Sobre Nosotros</a></li>
-    <li><a href="#contacto" class="nav-cta">Solicitar Cita</a></li>
-  </ul>
-</nav>
-
-<!-- ── HERO ── -->
-<section class="hero">
-  <div>
-    <div class="hero-badge">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-      211+ clientes satisfechos · Madrid
-    </div>
-    <h1>Notaría Monzón Moreno<br>Madrid</h1>
-    <p>Seguridad jurídica, tradición y rigor en cada acto notarial. Le acompañamos en los momentos más importantes de su vida.</p>
-    <div class="hero-actions">
-      <a href="#contacto" class="btn-primary">Solicitar Cita Previa</a>
-      <a href="#servicios" class="btn-outline">Ver Servicios</a>
-    </div>
-    <div class="hero-trust">
-      <div class="trust-item">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        Colegio Notarial de Madrid
-      </div>
-      <div class="trust-item">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        Atención personalizada
-      </div>
-      <div class="trust-item">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-        Confidencialidad garantizada
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── SERVICIOS ── -->
-<section class="servicios" id="servicios">
-  <div class="container">
-    <p class="section-label">Nuestros servicios</p>
-    <h2 class="section-title">Todo lo que necesita,<br>bajo un mismo techo</h2>
-    <p class="section-text">Ofrecemos un servicio notarial completo con la experiencia y la seriedad que cada operación jurídica requiere.</p>
-
-    <div class="servicios-grid">
-
-      <div class="servicio-card">
-        <svg class="servicio-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-        <h3>Compraventa Inmobiliaria</h3>
-        <p>Escrituras de compraventa de viviendas, locales y fincas rústicas. Revisión de cargas, cancelaciones hipotecarias y coordinación con el Registro de la Propiedad.</p>
-      </div>
-
-      <div class="servicio-card">
-        <svg class="servicio-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        <h3>Herencias y Sucesiones</h3>
-        <p>Declaraciones de herederos, adjudicación de herencias, partición de bienes y gestión integral del proceso sucesorio con plenas garantías legales.</p>
-      </div>
-
-      <div class="servicio-card">
-        <svg class="servicio-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-        <h3>Testamentos</h3>
-        <p>Redacción y autorización de testamentos abiertos. Le asesoramos para que su voluntad quede recogida con total claridad y seguridad jurídica.</p>
-      </div>
-
-      <div class="servicio-card">
-        <svg class="servicio-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        <h3>Poderes Notariales</h3>
-        <p>Poderes generales y especiales para representación, apoderamientos para actos concretos y poderes preventivos para el caso de incapacidad.</p>
-      </div>
-
-      <div class="servicio-card">
-        <svg class="servicio-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-        <h3>Constitución de Sociedades</h3>
-        <p>Escrituras de constitución de SL, SA y otras formas societarias. Estatutos, ampliaciones de capital, modificaciones y disoluciones mercantiles.</p>
-      </div>
-
-      <div class="servicio-card">
-        <svg class="servicio-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-        <h3>Actas Notariales</h3>
-        <p>Actas de presencia, notoriedad, manifestaciones y protocolización de documentos. Fe pública de hechos, estados y situaciones con plena eficacia jurídica.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ── SEDES ── -->
-<section class="sedes" id="sedes">
-  <div class="container">
-    <p class="section-label">Dónde encontrarnos</p>
-    <h2 class="section-title" style="color: var(--marfil);">Nuestras sedes<br>en Madrid</h2>
-    <p class="section-text" style="color: rgba(242,240,235,0.75);">Contamos con sedes en distintas ubicaciones de Madrid para facilitarle el acceso a nuestros servicios notariales.</p>
-
-    <div class="sedes-grid">
-
-      <div class="sede-card">
-        <svg class="sede-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        <h3>Sede Principal — Madrid Centro</h3>
-        <p>Calle Serrano, 12<br>28001 Madrid<br><br>Lun–Vie: 09:00 – 14:00 h</p>
-      </div>
-
-      <div class="sede-card">
-        <svg class="sede-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        <h3>Sede Norte — Chamartín</h3>
-        <p>Paseo de la Castellana, 155<br>28046 Madrid<br><br>Lun–Vie: 09:00 – 14:00 h</p>
-      </div>
-
-      <div class="sede-card">
-        <svg class="sede-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></svg>
-        <h3>Contacto Directo</h3>
-        <p>Teléfono: <a href="tel:+34607147464" style="color: var(--dorado);">607 14 74 64</a><br><br>Solicite cita previa por teléfono o a través de nuestro formulario de contacto.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ── CONFIANZA ── -->
-<section class="confianza" id="nosotros">
-  <div class="container">
-    <div class="confianza-inner">
-      <div class="confianza-stats">
-        <div class="stat">
-          <div class="stat-num">211+</div>
-          <div class="stat-label">Clientes satisfechos</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">20+</div>
-          <div class="stat-label">Años de experiencia</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">2</div>
-          <div class="stat-label">Sedes en Madrid</div>
-        </div>
-      </div>
-      <div class="confianza-text">
-        <p class="section-label">Por qué elegirnos</p>
-        <h2 class="section-title">Fe pública al servicio<br>de la ciudadanía</h2>
-        <p class="section-text">El Notario Patricio Monzón Moreno ofrece un servicio personalizado, accesible y riguroso. Más de dos décadas de trayectoria avalan cada actuación notarial con la máxima integridad jurídica.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── CONTACTO ── -->
-<section class="contacto" id="contacto">
-  <div class="container">
-    <p class="section-label">Solicitar cita</p>
-    <h2 class="section-title">Contacte con nosotros</h2>
-
-    <div class="contacto-inner">
-      <div class="contacto-info">
-        <h3>Estamos aquí para ayudarle</h3>
-
-        <div class="contacto-item">
-          <svg class="contacto-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          <p><strong>Teléfono</strong><br><a href="tel:+34607147464">607 14 74 64</a></p>
-        </div>
-
-        <div class="contacto-item">
-          <svg class="contacto-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <p><strong>Sede Principal</strong><br>Calle Serrano, 12<br>28001 Madrid</p>
-        </div>
-
-        <div class="contacto-item">
-          <svg class="contacto-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          <p><strong>Horario de atención</strong><br>Lunes a Viernes: 09:00 – 14:00 h<br>Consulte disponibilidad para tarde</p>
+  <main>
+    <section id="inicio" class="hero-shell">
+      <div class="hero-copy">
+        <p class="eyebrow">Colegio Notarial de Madrid</p>
+        <h1>Rigor operativo para particulares y empresa, con dos sedes y una respuesta directa.</h1>
+        <p class="intro">La notaría acompaña compraventas, sucesiones, testamentos, poderes y mercantil con una práctica orientada a preparar bien el expediente antes de la firma y a simplificar la interlocución del cliente.</p>
+        <div class="hero-actions">
+          <a href="#contacto" class="button button-solid">Solicitar cita</a>
+          <a href="#sedes" class="button button-outline">Ver sedes</a>
         </div>
       </div>
 
-      <form onsubmit="handleSubmit(event)">
-        <div class="form-group">
-          <label for="nombre">Nombre completo</label>
-          <input type="text" id="nombre" placeholder="Su nombre y apellidos" required />
+      <div class="hero-stack">
+        <figure class="hero-photo">
+          <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1800&q=80&fit=crop" alt="Espacio de trabajo profesional con mesas y documentación" />
+        </figure>
+        <div class="hero-metrics">
+          <div>
+            <strong>211+</strong>
+            <span>Clientes satisfechos</span>
+          </div>
+          <div>
+            <strong>20+</strong>
+            <span>Años de experiencia</span>
+          </div>
+          <div>
+            <strong>2</strong>
+            <span>Sedes en Madrid</span>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="telefono">Teléfono</label>
-          <input type="tel" id="telefono" placeholder="600 000 000" required />
-        </div>
-        <div class="form-group">
-          <label for="servicio">Servicio requerido</label>
-          <select id="servicio">
-            <option value="">Seleccionar servicio…</option>
-            <option>Compraventa inmobiliaria</option>
-            <option>Herencias y sucesiones</option>
-            <option>Testamento</option>
-            <option>Poder notarial</option>
-            <option>Constitución de sociedad</option>
-            <option>Acta notarial</option>
-            <option>Otro</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="mensaje">Mensaje (opcional)</label>
-          <textarea id="mensaje" placeholder="Indíquenos brevemente su consulta…"></textarea>
-        </div>
-        <button type="submit" class="form-submit">Solicitar Cita Previa</button>
-        <p id="form-success" style="display:none;margin-top:1rem;color:var(--dorado);font-size:0.9rem;">✓ Solicitud recibida. Le contactaremos en breve.</p>
-      </form>
-    </div>
-  </div>
-</section>
-
-<!-- ── FOOTER ── -->
-<footer>
-  <div class="footer-inner">
-    <div>
-      <div class="footer-brand">Notaría Monzón Moreno</div>
-      <p>Notario Patricio Monzón Moreno<br>Madrid, España</p>
-    </div>
-    <div>
-      <p style="margin-bottom:0.6rem;color:rgba(242,240,235,0.4);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;">Servicios</p>
-      <div class="footer-links" style="flex-direction:column;gap:0.5rem;">
-        <a href="#servicios">Compraventa Inmobiliaria</a>
-        <a href="#servicios">Herencias y Testamentos</a>
-        <a href="#servicios">Poderes Notariales</a>
-        <a href="#servicios">Constitución de Sociedades</a>
       </div>
-    </div>
-    <div>
-      <p style="margin-bottom:0.6rem;color:rgba(242,240,235,0.4);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;">Contacto</p>
-      <p style="margin-bottom:0.4rem;"><a href="tel:+34607147464" style="color:rgba(242,240,235,0.6);text-decoration:none;">607 14 74 64</a></p>
-      <p>Lun–Vie 09:00–14:00</p>
-    </div>
-  </div>
-  <hr class="footer-divider" />
-  <div class="footer-bottom">
-    <p>&copy; 2025 Notaría Monzón Moreno · Todos los derechos reservados</p>
-    <div class="footer-links">
-      <a href="#">Aviso Legal</a>
-      <a href="#">Política de Privacidad</a>
-      <a href="#">Cookies</a>
-    </div>
-  </div>
-</footer>
+    </section>
 
-<script>
-  // Mobile nav toggle
-  const hamburger = document.getElementById('hamburger');
-  const navLinks = document.getElementById('nav-links');
-  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+    <section id="servicios" class="services-shell">
+      <div class="section-header">
+        <p class="eyebrow">Servicios</p>
+        <h2>Seis áreas de trabajo tratadas con un mismo criterio: preparación, claridad y seguridad jurídica.</h2>
+      </div>
 
-  // Close nav on link click
-  navLinks.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => navLinks.classList.remove('open'));
-  });
+      <div class="service-list">
+        <article>
+          <span>01</span>
+          <div><h3>Compraventa inmobiliaria</h3><p>Escrituras de viviendas, locales y fincas, revisión de cargas y coordinación registral.</p></div>
+        </article>
+        <article>
+          <span>02</span>
+          <div><h3>Herencias y sucesiones</h3><p>Declaraciones de herederos, partición de bienes y gestión integral del proceso sucesorio.</p></div>
+        </article>
+        <article>
+          <span>03</span>
+          <div><h3>Testamentos</h3><p>Redacción y autorización con asesoramiento claro para dejar la voluntad bien formulada.</p></div>
+        </article>
+        <article>
+          <span>04</span>
+          <div><h3>Poderes notariales</h3><p>Poderes generales, especiales y preventivos para representación y actos concretos.</p></div>
+        </article>
+        <article>
+          <span>05</span>
+          <div><h3>Constitución de sociedades</h3><p>Sociedades, estatutos, ampliaciones de capital y modificaciones mercantiles.</p></div>
+        </article>
+        <article>
+          <span>06</span>
+          <div><h3>Actas notariales</h3><p>Actas de presencia, notoriedad y protocolización con eficacia jurídica plena.</p></div>
+        </article>
+      </div>
+    </section>
 
-  // Form handler
-  function handleSubmit(e) {
-    e.preventDefault();
-    document.getElementById('form-success').style.display = 'block';
-    e.target.reset();
-  }
+    <section id="sedes" class="offices-shell">
+      <div class="section-header section-header-light">
+        <p class="eyebrow">Sedes</p>
+        <h2>Presencia en dos puntos de Madrid para facilitar atención y agenda.</h2>
+      </div>
 
-  // Smooth nav active states
-  const sections = document.querySelectorAll('section[id]');
-  window.addEventListener('scroll', () => {
-    const y = window.scrollY + 80;
-    sections.forEach(s => {
-      const link = document.querySelector(`nav a[href="#${s.id}"]`);
-      if (!link) return;
-      if (y >= s.offsetTop && y < s.offsetTop + s.offsetHeight) {
-        link.style.opacity = '1';
-      } else {
-        link.style.opacity = '';
-      }
-    });
-  });
-</script>
+      <div class="office-grid">
+        <article class="office-card">
+          <span class="office-tag">Sede principal</span>
+          <h3>Madrid Centro</h3>
+          <p>Calle Serrano, 12<br>28001 Madrid</p>
+          <p>Lun–Vie: 09:00 – 14:00 h</p>
+        </article>
+        <article class="office-card">
+          <span class="office-tag">Sede norte</span>
+          <h3>Chamartín</h3>
+          <p>Paseo de la Castellana, 155<br>28046 Madrid</p>
+          <p>Lun–Vie: 09:00 – 14:00 h</p>
+        </article>
+        <article class="office-card office-card-accent">
+          <span class="office-tag">Contacto directo</span>
+          <h3>Atención previa</h3>
+          <p><a href="tel:+34607147464">607 14 74 64</a></p>
+          <p>Solicitud de cita por teléfono y coordinación previa del trámite.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="nosotros" class="overview-shell">
+      <div class="overview-copy">
+        <p class="eyebrow">Por qué elegirnos</p>
+        <h2>Una práctica notarial pensada para reducir incertidumbre, no para añadirla.</h2>
+        <p>El despacho trabaja con atención personalizada, interlocución directa y una revisión previa que ayuda a llegar a la firma con la documentación en orden y el alcance del acto bien comprendido.</p>
+        <p>La experiencia acumulada en Madrid permite acompañar tanto operaciones particulares como expedientes de empresa con una metodología sobria y eficaz.</p>
+      </div>
+      <figure class="overview-photo">
+        <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=1800&q=80&fit=crop" alt="Interior sobrio de oficina profesional" />
+      </figure>
+    </section>
+
+    <section id="contacto" class="contact-shell">
+      <div class="contact-copy">
+        <p class="eyebrow">Contacto</p>
+        <h2>Solicitud de cita con respuesta directa y posibilidad de consulta de horario de tarde.</h2>
+        <p>La atención ordinaria se realiza de lunes a viernes por la mañana. Si su operación requiere otra franja, el despacho puede indicarle disponibilidad adicional.</p>
+      </div>
+
+      <div class="contact-cards">
+        <article class="contact-card">
+          <span>Teléfono</span>
+          <strong><a href="tel:+34607147464">607 14 74 64</a></strong>
+          <p>Canal principal para solicitud de cita previa.</p>
+        </article>
+        <article class="contact-card">
+          <span>Sede principal</span>
+          <strong>Calle Serrano, 12</strong>
+          <p>28001 Madrid</p>
+        </article>
+        <article class="contact-card">
+          <span>Horario</span>
+          <strong>Lunes a viernes</strong>
+          <p>09:00 – 14:00 h · Consulte disponibilidad de tarde</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Notaría Monzón Moreno · Madrid · 607 14 74 64</p>
+    <p>&copy; 2025 Notaría Monzón Moreno. Todos los derechos reservados.</p>
+  </footer>
 </body>
 </html>
